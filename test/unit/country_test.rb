@@ -6,7 +6,8 @@ class CountryTest < ActiveSupport::TestCase
     {
       :name => "Country Name",
       :fco_id => "country_name",
-      :iso_3166_2 => "AA"
+      :iso_3166_2 => "AA",
+      :slug => "country_name"
     }
   end
 

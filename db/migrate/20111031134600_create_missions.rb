@@ -6,5 +6,7 @@ class CreateMissions < ActiveRecord::Migration
       t.decimal :latitude, :precision => 15, :scale => 10
       t.decimal :longitude, :precision => 15, :scale => 10
     end
+
+    add_index :missions, :fco_id
   end
 end

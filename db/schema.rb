@@ -17,8 +17,11 @@ ActiveRecord::Schema.define(:version => 20111031134600) do
     t.string "name"
     t.string "fco_id"
     t.string "iso_3166_2"
-    t.text   "raw_travel_advice"
+    t.string "slug"
+    t.text   "raw_travel_advice", :limit => 2147483647
   end
+
+  add_index "countries", ["slug"], :name => "index_countries_on_slug", :unique => true
 
   create_table "missions", :force => true do |t|
     t.string  "fco_id"
@@ -29,5 +32,7 @@ ActiveRecord::Schema.define(:version => 20111031134600) do
     t.decimal "latitude",    :precision => 15, :scale => 10
     t.decimal "longitude",   :precision => 15, :scale => 10
   end
+
+  add_index "missions", ["fco_id"], :name => "index_missions_on_fco_id"
 
 end

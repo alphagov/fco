@@ -25,9 +25,11 @@ class APIImporter
       fetch_countries.each do |country_json|
         fco_id = normalize_fco_id(country_json['country']['slug'])
         country = Country.find_or_initialize_by_fco_id(fco_id)
-        Rails.logger.debug "Importing #{fco_id}"
-        country.name = normalize_country_name(country_json['country']['name'])
+        name = normalize_country_name(country_json['country']['name'])
+        country.name = name
+        country.slug = name.to_url
         country.iso_3166_2 = country_code_for_name(country.name)
+        Rails.logger.debug "Importing #{country.name} (#{country.fco_id}/#{country.slug})"
         country.save!
       end
     end

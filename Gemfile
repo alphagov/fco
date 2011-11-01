@@ -1,9 +1,10 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
-gem 'sqlite3'
+gem 'mysql2'
 gem 'jquery-rails'
 gem 'rest-client'
+gem 'stringex'
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'

@@ -1,5 +1,6 @@
 Fco::Application.routes.draw do
 
-  match '/countries/:id', :to => 'countries#show'
+  root :to => 'home#show'
+  match '/countries/:id', :to => 'countries#show', :as => :country, :via => :get
 
 end
