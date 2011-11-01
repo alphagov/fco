@@ -16,12 +16,13 @@ class APIImporter
       import_countries
       import_missions
       import_travel_advice
+      import_travel_news
     end
   end
 
   def import_countries
     Country.transaction do
-      Country.destroy_all
+      Country.delete_all
       fetch_countries.each do |country_json|
         fco_id = normalize_fco_id(country_json['country']['slug'])
         country = Country.find_or_initialize_by_fco_id(fco_id)
@@ -37,7 +38,7 @@ class APIImporter
 
   def import_missions
     Mission.transaction do
-      Mission.destroy_all
+      Mission.delete_all
       fetch_missions.each do |embassy_json|
         mission = Mission.new
         mission.fco_id = embassy_json['embassy']['fco_id']
@@ -55,6 +56,23 @@ class APIImporter
         Rails.logger.debug "Importing travel advice for #{country.name} (#{country.fco_id})"
         country.raw_travel_advice = fetch_travel_advice(country).try(:[], 'travel_advice_article')
         country.save!
+      end
+    end
+  end
+
+  def import_travel_news
+    TravelNews.transaction do
+
+      TravelNews.delete_all
+      fetch_travel_news.each do |news_json|
+        tn = TravelNews.new
+        tn.title = news_json['travel_news']['title']
+        tn.published_at = Time.iso8601(news_json['travel_news']['published_on'])
+        tn.body_plain = news_json['travel_news']['body']['plain']
+        tn.body_markup = news_json['travel_news']['body']['markup']
+        tn.description = news_json['travel_news']['description']
+        tn.url = news_json['travel_news']['original_url']
+        tn.save!
       end
     end
   end
@@ -80,6 +98,11 @@ class APIImporter
     rescue RestClient::ResourceNotFound
       nil
     end
+  end
+
+  def fetch_travel_news
+    response = RestClient.get("http://fco.innovate.direct.gov.uk/travel-news.json")
+    JSON.parse(response.body)
   end
 
   def normalize_country_name(name)

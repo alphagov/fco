@@ -29,4 +29,12 @@ class APIImporterTest < ActiveSupport::TestCase
     assert_equal 7, country.raw_travel_advice['travel_advice_sections'].length
   end
 
+  test '.import_travel_news' do
+    stub_request(:get, "http://fco.innovate.direct.gov.uk/travel-news.json").
+      to_return(:body => File.new(asset_path('travel-news.json')))
+
+    APIImporter.new.import_travel_news
+    assert_equal 10, TravelNews.count
+  end
+
 end
