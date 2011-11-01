@@ -1,4 +1,4 @@
-require 'pp'
+require 'csv'
 
 class APIImporter
 
@@ -23,9 +23,10 @@ class APIImporter
     Country.transaction do
       Country.destroy_all
       fetch_countries.each do |country_json|
-        name = normalize_country_name(country_json['country']['name'])
-        country = Country.find_or_initialize_by_name(name)
-        country.fco_id = country_json['country']['slug']
+        fco_id = normalize_fco_id(country_json['country']['slug'])
+        country = Country.find_or_initialize_by_fco_id(fco_id)
+        Rails.logger.debug "Importing #{fco_id}"
+        country.name = normalize_country_name(country_json['country']['name'])
         country.iso_3166_2 = country_code_for_name(country.name)
         country.save!
       end
@@ -49,7 +50,8 @@ class APIImporter
   def import_travel_advice
     Country.transaction do
       Country.find_each do |country|
-        country.raw_travel_advice = fetch_travel_advice(country)['travel_advice_article']
+        Rails.logger.debug "Importing travel advice for #{country.name} (#{country.fco_id})"
+        country.raw_travel_advice = fetch_travel_advice(country).try(:[], 'travel_advice_article')
         country.save!
       end
     end
@@ -68,9 +70,14 @@ class APIImporter
   end
 
   def fetch_travel_advice(country)
-    url = "http://fco.innovate.direct.gov.uk/travel-advice/full_results.json?c%5B%5D=#{country.fco_id}"
-    response = RestClient.get(url)
-    JSON.parse(response.body).first
+    fco_id = normalize_fco_id(country.fco_id)
+    begin
+      url = "http://fco.innovate.direct.gov.uk/travel-advice/full_results.json?c%5B%5D=#{fco_id}"
+      response = RestClient.get(url)
+      JSON.parse(response.body).first
+    rescue RestClient::ResourceNotFound
+      nil
+    end
   end
 
   def normalize_country_name(name)
@@ -85,6 +92,23 @@ class APIImporter
       "Kyrgyzstan"
     else
       name.strip
+    end
+  end
+
+  def normalize_fco_id(fco_id)
+    case fco_id
+    when 'timor-leste'
+      'east-timor-(timor-leste)'
+    when 'south-korea'
+      'korea'
+    when 'gambia'
+      'gambia,-the'
+    when 'kyrgystan'
+      'kyrgyzstan'
+    when 'south-georgia-and-south-sandwich-islands'
+      'south-georgia-south-sandwich'
+    else
+      fco_id
     end
   end
 
