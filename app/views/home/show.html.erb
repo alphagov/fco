@@ -3,3 +3,9 @@
     <li><%= link_to country.name, country_path(country) %></li>
   <%- end -%>
 </ul>
+
+<ul>
+  <%- @travel_news.each do |news| -%>
+    <li><%= link_to news.title, news.url %></li>
+  <%- end -%>
+</ul>
