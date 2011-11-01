@@ -21,7 +21,7 @@ class APIImporterTest < ActiveSupport::TestCase
   test '.import_travel_advice' do
     stub_request(:get, "http://fco.innovate.direct.gov.uk/travel-advice/full_results.json?c%5B%5D=afghanistan").
       to_return(:body => File.new(asset_path('travel_advice_afghanistan.json')))
-    country = Country.create!(:name => "Afghanistan", :fco_id => "afghanistan", :iso_3166_2 => "AF")
+    country = Country.create!(:name => "Afghanistan", :fco_id => "afghanistan", :iso_3166_2 => "AF", :slug => "afghanistan")
 
     APIImporter.new.import_travel_advice
 
