@@ -15,12 +15,19 @@ ActiveRecord::Schema.define(:version => 20111031134600) do
 
   create_table "countries", :force => true do |t|
     t.string "name"
+    t.string "fco_id"
     t.string "iso_3166_2"
+    t.text   "raw_travel_advice"
   end
 
   create_table "missions", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "fco_id"
+    t.string  "email"
+    t.string  "url"
+    t.string  "designation"
+    t.text    "address"
+    t.decimal "latitude",    :precision => 15, :scale => 10
+    t.decimal "longitude",   :precision => 15, :scale => 10
   end
 
 end
