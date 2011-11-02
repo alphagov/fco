@@ -8,7 +8,7 @@ gem 'stringex'
 
 group :development do
   gem 'guard'
-  gem 'guard-test'
+  gem 'guard-minitest'
 
   if RUBY_PLATFORM =~ /darwin/i
     gem 'growl_notify'
