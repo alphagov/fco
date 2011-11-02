@@ -4,7 +4,7 @@ class APIImporter
 
   def initialize
     country_csv_path = File.join(Rails.root, 'data', 'country_codes.csv')
-    csv = CSV.read(country_csv_path, :headers => true, :encoding => 'U')
+    csv = CSV.read(country_csv_path, :headers => true, :encoding => "UTF-8")
     @countries = []
     csv.each do |row|
       @countries << row.to_hash
@@ -29,7 +29,7 @@ class APIImporter
         name = normalize_country_name(country_json['country']['name'])
         country.name = name
         country.slug = name.to_url
-        country.iso_3166_2 = country_code_for_name(country.name)
+        country.iso_3166_2 = country_code_for_name(name)
         Rails.logger.debug "Importing #{country.name} (#{country.fco_id}/#{country.slug})"
         country.save!
       end
@@ -141,7 +141,7 @@ class APIImporter
     row = @countries.find do |c|
       c['fco_name'] == name
     end
-    row.try(:[], 'iso3611_2')
+    row['iso3611_2']
   end
 
 end
