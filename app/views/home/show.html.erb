@@ -6,6 +6,9 @@
 
 <ul>
   <%- @travel_news.each do |news| -%>
-    <li><%= link_to news.title, news.url %></li>
+    <li>
+      <h3><%= link_to news.title, news.url %></h3>
+      <p><%= news.description %></p>
+    </li>
   <%- end -%>
 </ul>

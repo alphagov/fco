@@ -5,6 +5,14 @@ gem 'mysql2'
 gem 'jquery-rails'
 gem 'rest-client'
 gem 'stringex'
+gem 'loofah'
+gem 'nokogiri'
+
+if ENV['SLIMMER_DEV']
+  gem 'slimmer', :path => '../slimmer'
+else
+  gem 'slimmer', :git => 'git@github.com:alphagov/slimmer.git'
+end
 
 group :development do
   gem 'guard'

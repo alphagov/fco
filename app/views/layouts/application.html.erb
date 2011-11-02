@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Fco</title>
-  <%= stylesheet_link_tag    "/stylesheets/application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>Fco</title>
+    <%= stylesheet_link_tag    "/stylesheets/application" %>
+    <meta name="x-section-name" content="FCO" />
+    <meta name="x-section-link" content="fco" />
+    <%= yield :head %>
+  </head>
+  <body>
+    <div id="wrapper" class="fco">
+      <%= yield %>
+    </div>
+  </body>
 </html>

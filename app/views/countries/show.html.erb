@@ -1,6 +1,5 @@
 <h1><%= @country.name %></h1>
 
 <%- @country.raw_travel_advice['travel_advice_sections'].each do |section| -%>
-  <h2><%= section['title'] %></h2>
-  <%= section['body']['markup'].html_safe %>
+  <%= TravelAdviceSectionPresenter.new(section).html %>
 <%- end -%>
