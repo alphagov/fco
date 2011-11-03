@@ -13,4 +13,8 @@ class TravelNews < ActiveRecord::Base
     write_attribute(:slug, new_title.try(:to_url))
   end
 
+  def self.find_by_date_and_slug!(date, slug)
+    where('published_at >= ? AND published_at <= ? AND slug = ?', date.beginning_of_day, date.end_of_day, slug).first || raise(ActiveRecord::RecordNotFound)
+  end
+
 end

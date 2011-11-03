@@ -7,7 +7,7 @@
 <ul>
   <%- @travel_news.each do |news| -%>
     <li>
-      <h3><%= link_to news.title, news.url %></h3>
+      <h3><%= link_to news.title, news_item_path(news) %></h3>
       <p><%= news.description %></p>
     </li>
   <%- end -%>
