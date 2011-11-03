@@ -41,21 +41,4 @@ class TravelAdviceSectionPresenter
     end
   end
 
-  def make_internal_links_relative
-    @style_scrubber ||= Loofah::Scrubber.new do |node|
-      node.remove_attribute('style')
-    end
-  end
-
-  def remove_anchor_tags
-    @remove_anchor_tags ||= Loofah::Scrubber.new do |node|
-    #   if node.name == 'a' && node['href'].blank?
-    #    node.children.each do |child|
-    #      node.parent << child
-    #     end
-    #     node.remove
-    #   end
-    end
-  end
-
 end

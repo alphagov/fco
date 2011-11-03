@@ -26,6 +26,7 @@ end
 
 group :test do
   gem 'turn', :require => false
-  gem 'webmock'
+  gem 'webmock', :require => false
+  gem 'mocha', :require => false
   gem 'minitest'
 end

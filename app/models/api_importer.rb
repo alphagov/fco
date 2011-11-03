@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'csv'
 
 class APIImporter
@@ -17,6 +19,7 @@ class APIImporter
       import_missions
       import_travel_advice
       import_travel_news
+      import_advice_statuses
     end
   end
 
@@ -77,6 +80,40 @@ class APIImporter
     end
   end
 
+  def import_advice_statuses
+    Country.transaction do
+      advice = fetch_country_advice
+
+      # We want countries that are referenced in the HTML but we don't have in the app to raise
+      missing_country_names = advice.values.flatten
+
+      Country.find_each do |country|
+        name = normalize_name_for_travel_advice_status(country.name)
+        missing_country_names.delete(name)
+
+        if advice['noTravelAll'].include?(name)
+          country.no_travel_restriction = :all
+        elsif advice['noTravelParts'].include?(name)
+          country.no_travel_restriction = :parts
+        else
+          country.no_travel_restriction = :none
+        end
+
+        if advice['essentialTravelAll'].include?(name)
+          country.essential_travel_restriction = :all
+        elsif advice['essentialTravelParts'].include?(name)
+          country.essential_travel_restriction = :parts
+        else
+          country.essential_travel_restriction = :none
+        end
+
+        country.save!
+      end
+
+      raise "Unmatched countries: #{missing_country_names.join(', ')}" if missing_country_names.length > 0
+    end
+  end
+
   private
 
   def fetch_countries
@@ -103,6 +140,23 @@ class APIImporter
   def fetch_travel_news
     response = RestClient.get("http://fco.innovate.direct.gov.uk/travel-news.json")
     JSON.parse(response.body)
+  end
+
+  def fetch_country_advice
+    response = RestClient.get("http://www.fco.gov.uk/en/travel-and-living-abroad/travel-advice-by-country?action=noTravelAll")
+    html = Nokogiri::HTML.parse(response.body)
+
+    # Outputs a hash of each of the Heading IDs, with an array of the countries they refer to.
+    Hash.new.tap do |output|
+      html.css('#Main h2')[2..-1].each do |h2|
+        name = h2.css('a').first['name']
+        output[name] = []
+        ul = h2.next_element
+        ul.css('li').each do |li|
+          output[name] << li.css('a')[0].inner_text.strip
+        end
+      end
+    end
   end
 
   def normalize_country_name(name)
@@ -134,6 +188,17 @@ class APIImporter
       'south-georgia-south-sandwich'
     else
       fco_id
+    end
+  end
+
+  def normalize_name_for_travel_advice_status(name)
+    case name
+    when "Israel"
+      "Israel and the Occupied Palestinian Territories"
+    when /Ivory Coast/
+      "Côte d'Ivoire (Ivory Coast)"
+    else
+      name
     end
   end
 
