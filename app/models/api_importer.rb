@@ -16,7 +16,6 @@ class APIImporter
   def run
     Country.transaction do
       import_countries
-      import_missions
       import_travel_advice
       import_travel_news
       import_advice_statuses
@@ -26,6 +25,7 @@ class APIImporter
   def import_countries
     Country.transaction do
       Country.delete_all
+      Mission.delete_all
       fetch_countries.each do |country_json|
         fco_id = normalize_fco_id(country_json['country']['slug'])
         country = Country.find_or_initialize_by_fco_id(fco_id)
@@ -35,20 +35,21 @@ class APIImporter
         country.iso_3166_2 = country_code_for_name(name)
         Rails.logger.debug "Importing #{country.name} (#{country.fco_id}/#{country.slug})"
         country.save!
-      end
-    end
-  end
 
-  def import_missions
-    Mission.transaction do
-      Mission.delete_all
-      fetch_missions.each do |embassy_json|
-        mission = Mission.new
-        mission.fco_id = embassy_json['embassy']['fco_id']
-        mission.designation = embassy_json['embassy']['designation']
-        mission.latitude = embassy_json['embassy']['lat']
-        mission.longitude = embassy_json['embassy']['long']
-        mission.save!
+        country_json['country']['embassies'].each do |embassy_json|
+          m = country.missions.new
+          m.email = embassy_json['email']
+          m.url = embassy_json['original_url']
+          m.fco_id = embassy_json['fco_id']
+          m.latitude = embassy_json['lat']
+          m.longitude = embassy_json['long']
+          m.designation = embassy_json['designation']
+          m.office_hours = embassy_json['office_hours']['plain']
+          m.address = embassy_json['address']['plain']
+          m.location_name = embassy_json['location_name']
+          m.phone = embassy_json['phone']
+          m.save!
+        end
       end
     end
   end

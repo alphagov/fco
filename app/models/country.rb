@@ -4,7 +4,7 @@ class Country < ActiveRecord::Base
 
   TRAVEL_RESTRICTION_STATUSES = [:none, :all, :parts]
 
-  has_many :missions, :foreign_key => "fco_id", :primary_key => "fco_id"
+  has_many :missions, :foreign_key => "country_fco_id", :primary_key => "fco_id", :dependent => :destroy
 
   validates :name, :presence => true
   validates :fco_id, :presence => true

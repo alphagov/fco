@@ -3,3 +3,7 @@
 <%- @country.raw_travel_advice['travel_advice_sections'].each do |section| -%>
   <%= TravelAdviceSectionPresenter.new(section).html %>
 <%- end -%>
+
+<%- @missions.each do |mission| -%>
+  <%= debug mission -%>
+<%- end -%>

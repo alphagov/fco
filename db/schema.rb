@@ -26,13 +26,17 @@ ActiveRecord::Schema.define(:version => 20111101161517) do
   add_index "countries", ["slug"], :name => "index_countries_on_slug", :unique => true
 
   create_table "missions", :force => true do |t|
+    t.string  "country_fco_id"
     t.string  "fco_id"
     t.string  "email"
     t.string  "url"
     t.string  "designation"
+    t.string  "location_name"
+    t.string  "phone"
     t.text    "address"
-    t.decimal "latitude",    :precision => 15, :scale => 10
-    t.decimal "longitude",   :precision => 15, :scale => 10
+    t.text    "office_hours"
+    t.decimal "latitude",       :precision => 15, :scale => 10
+    t.decimal "longitude",      :precision => 15, :scale => 10
   end
 
   add_index "missions", ["fco_id"], :name => "index_missions_on_fco_id"
