@@ -1,6 +1,7 @@
 class TravelNews < ActiveRecord::Base
 
   validates :title, :presence => true
+  validates :slug, :presence => true
   validates :published_at, :presence => true
   validates :body_plain, :presence => true
   validates :body_markup, :presence => true

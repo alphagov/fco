@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20111101161517) do
     t.text     "description"
     t.string   "title"
     t.string   "url"
+    t.string   "slug"
     t.datetime "published_at"
   end
 
