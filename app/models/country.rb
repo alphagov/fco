@@ -10,11 +10,15 @@ class Country < ActiveRecord::Base
   validates :fco_id, :presence => true
   validates :slug, :presence => true
   validates :iso_3166_2, :presence => true
-  validates :no_travel_restriction, :inclusion => { :in => TRAVEL_RESTRICTION_STATUSES, :allow_nil => true }
+  validates :avoid_travel_restriction, :inclusion => { :in => TRAVEL_RESTRICTION_STATUSES, :allow_nil => true }
   validates :essential_travel_restriction, :inclusion => { :in => TRAVEL_RESTRICTION_STATUSES, :allow_nil => true }
 
-  symbolize_attribute :no_travel_restriction
+  symbolize_attribute :avoid_travel_restriction
   symbolize_attribute :essential_travel_restriction
+
+  scope :avoid_travel, where(:avoid_travel_restriction => [:all, :parts])
+  scope :essential_travel, where(:essential_travel_restriction => [:all, :parts])
+  scope :descending_restriction_priority, lambda { |restriction| order("#{restriction.to_s}=\"all\" DESC, #{restriction.to_s}=\"parts\" DESC") }
 
   def to_param
     slug

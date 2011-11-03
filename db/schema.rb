@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20111101161517) do
     t.string "iso_3166_2"
     t.string "slug"
     t.string "essential_travel_restriction"
-    t.string "no_travel_restriction"
+    t.string "avoid_travel_restriction"
     t.text   "raw_travel_advice",            :limit => 2147483647
   end
 

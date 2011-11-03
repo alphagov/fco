@@ -92,11 +92,11 @@ class APIImporter
         missing_country_names.delete(name)
 
         if advice['noTravelAll'].include?(name)
-          country.no_travel_restriction = :all
+          country.avoid_travel_restriction = :all
         elsif advice['noTravelParts'].include?(name)
-          country.no_travel_restriction = :parts
+          country.avoid_travel_restriction = :parts
         else
-          country.no_travel_restriction = :none
+          country.avoid_travel_restriction = :none
         end
 
         if advice['essentialTravelAll'].include?(name)

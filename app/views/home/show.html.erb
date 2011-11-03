@@ -12,3 +12,21 @@
     </li>
   <%- end -%>
 </ul>
+
+<h2>Essential Travel Only</h2>
+<ul>
+  <%- @essential_travel_countries.each do |country| -%>
+    <li>
+      <%= link_to "#{country.essential_travel_restriction.to_s.titlecase} of #{country.name}", country_path(country) %>
+    </li>
+  <%- end -%>
+</ul>
+
+<h2>Avoid Travel To</h2>
+<ul>
+  <%- @avoid_travel_countries.each do |country| -%>
+    <li>
+      <%= link_to "#{country.avoid_travel_restriction.to_s.titlecase} of #{country.name}", country_path(country) %>
+    </li>
+  <%- end -%>
+</ul>

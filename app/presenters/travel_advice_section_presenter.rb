@@ -26,7 +26,7 @@ class TravelAdviceSectionPresenter
   end
 
   def body_node(doc)
-    Loofah.fragment(@html_body).scrub!(style_scrubber).scrub!(remove_anchor_tags)
+    Loofah.fragment(@html_body).scrub!(style_scrubber)
   end
 
   def header_node(doc)
