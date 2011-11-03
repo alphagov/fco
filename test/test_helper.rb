@@ -9,4 +9,3 @@ require 'asset_helpers'
 class ActiveSupport::TestCase
   include AssetHelpers
 end
-

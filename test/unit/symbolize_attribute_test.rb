@@ -19,5 +19,17 @@ class SymbolizeAttributeTest < ActiveSupport::TestCase
     assert_equal :string, dummy.testing
   end
 
+  test 'reading nil attribute' do
+    dummy = DummyObject.new
+    dummy.expects(:read_attribute).with(:testing).returns(nil)
+    assert_nil dummy.testing
+  end
+
+  test 'writing nil attribute' do
+    dummy = DummyObject.new
+    dummy.expects(:write_attribute).with(:testing, nil)
+    dummy.testing = nil
+  end
+
 end
 
