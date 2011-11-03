@@ -7,4 +7,9 @@ class TravelNews < ActiveRecord::Base
   validates :description, :presence => true
   validates :url, :presence => true
 
+  def title=(new_title)
+    write_attribute(:title, new_title)
+    write_attribute(:slug, new_title.try(:to_url))
+  end
+
 end
