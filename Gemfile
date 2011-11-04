@@ -14,13 +14,6 @@ else
   gem 'slimmer', :git => 'git@github.com:alphagov/slimmer.git'
 end
 
-group :darwin do
-  if RUBY_PLATFORM =~ /darwin/i
-    gem 'growl_notify'
-    gem 'rb-fsevent'
-  end
-end
-
 group :development do
   gem 'guard'
   gem 'guard-minitest'
