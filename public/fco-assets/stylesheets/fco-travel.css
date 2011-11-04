@@ -80,18 +80,20 @@
 	margin-top: 0.5em;
 }
 
-/* news pages */
+/* FCO article formatting */
 
-.fco-news article h1 {
-  font-size: 1.5em;
+article h1 {
+  font-size: 1.8em;
+  margin-top: 0;
+  margin-bottom: 0.5em;
 }
 
-.fco-news article h2.date {
+article h2.date {
   color: #666;
   font-size: 1em;
   margin-top: 0.5em;
 }
 
-.fco-news article .summary {
+article .summary {
   margin-top: 1.25em;
 }

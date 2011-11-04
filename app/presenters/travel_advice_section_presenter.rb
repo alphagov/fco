@@ -30,7 +30,7 @@ class TravelAdviceSectionPresenter
   end
 
   def header_node(doc)
-    Nokogiri::XML::Node.new("h1", doc).tap do |n|
+    Nokogiri::XML::Node.new("h2", doc).tap do |n|
       n.content = @section['title']
     end
   end
