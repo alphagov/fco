@@ -1,3 +1,15 @@
+#wrapper .fco-header hgroup {
+	padding: 1em 2em;
+}
+
+#wrapper .fco-header hgroup h1 {
+	padding: 0;
+}
+
+#wrapper .fco-header hgroup h2 {
+	margin-left: 0;
+}
+
 .content {
 	background-color: #fff;
 	padding: 2em;
