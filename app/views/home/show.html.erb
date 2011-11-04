@@ -1,32 +1,47 @@
-<ul>
-  <%- @countries.each do |country| -%>
-    <li><%= link_to country.name, country_path(country) %></li>
-  <%- end -%>
-</ul>
+<section>
 
-<ul>
-  <%- @travel_news.each do |news| -%>
-    <li>
-      <h3><%= link_to news.title, news_item_path(news) %></h3>
-      <p><%= news.description %></p>
-    </li>
-  <%- end -%>
-</ul>
+  <ul>
+    <%- @countries.each do |country| -%>
+      <li><%= link_to country.name, country_path(country) %></li>
+    <%- end -%>
+  </ul>
 
-<h2>Avoid All Travel To</h2>
-<ul>
-  <%- @avoid_travel_countries.each do |country| -%>
-    <li>
-      <%= link_to "#{country.avoid_travel_restriction.to_s.titlecase} of #{country.name}", country_path(country) %>
-    </li>
-  <%- end -%>
-</ul>
+  <div class="updates-travel-advice">
 
-<h2>Essential Travel Only To</h2>
-<ul>
-  <%- @essential_travel_countries.each do |country| -%>
-    <li>
-      <%= link_to "#{country.essential_travel_restriction.to_s.titlecase} of #{country.name}", country_path(country) %>
-    </li>
-  <%- end -%>
-</ul>
+    <div class="updates">
+      <h2>Avoid All Travel To</h2>
+      <ul>
+        <%- @avoid_travel_countries.each do |country| -%>
+          <li>
+            <%= link_to "#{country.avoid_travel_restriction.to_s.titlecase} of #{country.name}", country_path(country) %>
+          </li>
+        <%- end -%>
+      </ul>
+    </div>
+
+    <div class="updates">
+      <h2>Essential Travel Only To</h2>
+      <ul>
+        <%- @essential_travel_countries.each do |country| -%>
+          <li>
+            <%= link_to "#{country.essential_travel_restriction.to_s.titlecase} of #{country.name}", country_path(country) %>
+          </li>
+        <%- end -%>
+      </ul>
+    </div>
+
+    <div class="updates">
+      <h2>Recent updated</h2>
+      <ul>
+        <%- @travel_news.each do |news| -%>
+          <li>
+            <h3><%= link_to news.title, news_item_path(news) %></h3>
+            <p><%= news.description %></p>
+          </li>
+        <%- end -%>
+      </ul>
+    </div>
+  
+  </div>
+
+</section>
