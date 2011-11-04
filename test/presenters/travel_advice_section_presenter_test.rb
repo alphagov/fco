@@ -22,12 +22,12 @@ class TravelAdviceSectionPresenterTest < ActiveSupport::TestCase
       'title' => "Hello World",
       'section_markup_id' => 'helloWorld',
       'body' => {
-        'markup' => "<p>Hello <a id=\"blah\">red</a> world.</p>"
+        'markup' => "<p>Hello <a id=\"blah\">red</a> world. <a href=\"http://example.com\">Preserve this link</a>.</p>"
       }
     }
 
     html = TravelAdviceSectionPresenter.new(section).html
-    assert_equal "<h1>Hello World</h1><p>Hello red world.</p>", html
+    assert_equal "<h1>Hello World</h1><p>Hello red world. <a href=\"http://example.com\">Preserve this link</a>.</p>", html
   end
 
 end
