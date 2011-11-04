@@ -2,14 +2,11 @@ development:
   adapter: mysql2
   encoding: utf8
   database: fco_development
-  username: root
+  username: fco
   password:
-  socket: /tmp/mysql.sock
 
 test:
-  adapter: mysql2
-  encoding: utf8
-  database: fco_test
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 5
+  timeout: 5000

@@ -1,21 +1,21 @@
 <section>
 
-<h1><%= @country.name %></h1>
+  <h1><%= @country.name %></h1>
 
-<%- if [:all, :parts].include?(@country.avoid_travel_restriction) -%>
-  <p>We advise against any travel to <%= @country.avoid_travel_restriction.to_s %> of <%= @country.name %>.</p>
-<%- end -%>
+  <%- if [:all, :parts].include?(@country.avoid_travel_restriction) -%>
+    <p>We advise against any travel to <%= @country.avoid_travel_restriction.to_s %> of <%= @country.name %>.</p>
+  <%- end -%>
 
-<%- if [:all, :parts].include?(@country.essential_travel_restriction) -%>
-  <p>We advise only essential travel to <%= @country.essential_travel_restriction.to_s %> of <%= @country.name %>.</p>
-<%- end -%>
+  <%- if [:all, :parts].include?(@country.essential_travel_restriction) -%>
+    <p>We advise only essential travel to <%= @country.essential_travel_restriction.to_s %> of <%= @country.name %>.</p>
+  <%- end -%>
 
-<%- @country.raw_travel_advice['travel_advice_sections'].each do |section| -%>
-  <%= TravelAdviceSectionPresenter.new(section).html %>
-<%- end -%>
+  <%- @country.raw_travel_advice['travel_advice_sections'].each do |section| -%>
+    <%= TravelAdviceSectionPresenter.new(section).html %>
+  <%- end -%>
 
-<%- @missions.each do |mission| -%>
-  <%= debug mission -%>
-<%- end -%>
+  <%- @missions.each do |mission| -%>
+    <%= debug mission -%>
+  <%- end -%>
 
 </section>
