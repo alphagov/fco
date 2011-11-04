@@ -1,6 +1,20 @@
-<section>
-  <h1><%= @travel_news.title %></h1>
-  <h2><%= @travel_news.description %></h2>
-  <p><%= long_format_date(@travel_news.published_at) %></p>
-  <%= @travel_news.body_markup.html_safe %>
+<section class="group">
+  <header class="fco-header">
+    <hgroup>
+      <h1>
+        Travel advice
+      </h1>
+      <h2>
+        From the Foreign &amp; Commonwealth Office
+      </h2>
+    </hgroup>
+  </header>
+  <article>
+    <div class="inner">
+      <h1><%= @travel_news.title %></h1>
+      <h2><%= @travel_news.description %></h2>
+      <h3><%= long_format_date(@travel_news.published_at) %></h3>
+      <%= @travel_news.body_markup.html_safe %>
+    </div>
+  </article>
 </section>
