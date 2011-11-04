@@ -1,0 +1,39 @@
+.content {
+	background-color: #fff;
+	padding: 2em;
+}
+.content.with-related {
+	margin-right: 12em;
+}
+
+/* homepage */
+
+/* temp until have autocomplete country search */
+.guidance-headline ul {
+	background: #ffffcc;
+	height: 10em;
+	overflow: auto;
+}
+/* end temp */
+
+.fco-home .guidance-headline {
+	background-color: #efece0;
+	border: solid 2px #BBB;
+	-webkit-border-radius: 0.5em;
+	-moz-border-radius: 0.5em;
+	border-radius: 0.5em;
+	padding: 1.5em 0;
+}
+
+.fco-home .guidance-headline h1 {
+	text-align: center;
+}
+
+.fco-home .updates-travel-advice {
+	margin: 1em 0;
+}
+
+.fco-home .updates {
+	float: left;
+	width: 33.3%;
+}

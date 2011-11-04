@@ -1,9 +1,9 @@
-<section>
+<section class="fco-home">
 
   <header>
     <hgroup>
       <h1>
-        Travel Advice
+        Travel advice
       </h1>
       <h2>
         From the Foreign &amp; Commonwealth Office
@@ -11,51 +11,53 @@
     </hgroup>
   </header>
 
-  <div class="guidance-headline">
-    <h1>Where are you travelling to?</h1>
-    <ul>
-      <%- @countries.each do |country| -%>
-        <li><%= link_to country.name, country_path(country) %></li>
-      <%- end -%>
-    </ul>
-  </div>
-
-  <div class="updates-travel-advice">
-
-    <div class="updates">
-      <h2>Avoid All Travel To</h2>
+  <div class="content with-related">
+    <div class="guidance-headline">
+      <h1>Where are you travelling to?</h1>
       <ul>
-        <%- @avoid_travel_countries.each do |country| -%>
-          <li>
-            <%= link_to "#{country.avoid_travel_restriction.to_s.titlecase} of #{country.name}", country_path(country) %>
-          </li>
+        <%- @countries.each do |country| -%>
+          <li><%= link_to country.name, country_path(country) %></li>
         <%- end -%>
       </ul>
     </div>
 
-    <div class="updates">
-      <h2>Essential Travel Only To</h2>
-      <ul>
-        <%- @essential_travel_countries.each do |country| -%>
-          <li>
-            <%= link_to "#{country.essential_travel_restriction.to_s.titlecase} of #{country.name}", country_path(country) %>
-          </li>
-        <%- end -%>
-      </ul>
-    </div>
+    <div class="updates-travel-advice group">
 
-    <div class="updates">
-      <h2>Recent updated</h2>
-      <ul>
-        <%- @travel_news.each do |news| -%>
-          <li>
-            <h3><%= link_to news.title, news_item_path(news) %></h3>
-            <p><%= news.description %></p>
-          </li>
-        <%- end -%>
-      </ul>
-    </div>
+      <div class="updates">
+        <h2>Avoid all travel to</h2>
+        <ul>
+          <%- @avoid_travel_countries.each do |country| -%>
+            <li>
+              <%= link_to "#{country.avoid_travel_restriction.to_s.titlecase} of #{country.name}", country_path(country) %>
+            </li>
+          <%- end -%>
+        </ul>
+      </div>
+
+      <div class="updates">
+        <h2>Essential travel only to</h2>
+        <ul>
+          <%- @essential_travel_countries.each do |country| -%>
+            <li>
+              <%= link_to "#{country.essential_travel_restriction.to_s.titlecase} of #{country.name}", country_path(country) %>
+            </li>
+          <%- end -%>
+        </ul>
+      </div>
+
+      <div class="updates">
+        <h2>Recent updates</h2>
+        <ul>
+          <%- @travel_news.each do |news| -%>
+            <li>
+              <h3><%= link_to news.title, news_item_path(news) %></h3>
+              <p><%= news.description %></p>
+            </li>
+          <%- end -%>
+        </ul>
+      </div>
   
+    </div>
   </div>
 
 </section>
