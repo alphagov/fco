@@ -1,10 +1,24 @@
 <section>
 
-  <ul>
-    <%- @countries.each do |country| -%>
-      <li><%= link_to country.name, country_path(country) %></li>
-    <%- end -%>
-  </ul>
+  <header>
+    <hgroup>
+      <h1>
+        Travel Advice
+      </h1>
+      <h2>
+        From the Foreign &amp; Commonwealth Office
+      </h2>
+    </hgroup>
+  </header>
+
+  <div class="guidance-headline">
+    <h1>Where are you travelling to?</h1>
+    <ul>
+      <%- @countries.each do |country| -%>
+        <li><%= link_to country.name, country_path(country) %></li>
+      <%- end -%>
+    </ul>
+  </div>
 
   <div class="updates-travel-advice">
 
