@@ -1,10 +1,3 @@
-GIT
-  remote: git@github.com:alphagov/slimmer.git
-  revision: 03ed9d86ac3401b4922c54cc088506e252e0356a
-  specs:
-    slimmer (0.8.0)
-      nokogiri
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -103,6 +96,8 @@ GEM
     simplecov-html (0.4.5)
     simplecov-rcov (0.2.3)
       simplecov (>= 0.4.1)
+    slimmer (0.8.0)
+      nokogiri
     sprockets (2.0.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -140,7 +135,7 @@ DEPENDENCIES
   rest-client
   simplecov (= 0.4.2)
   simplecov-rcov
-  slimmer!
+  slimmer (= 0.8.0)
   sqlite3-ruby
   stringex
   turn
