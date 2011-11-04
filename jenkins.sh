@@ -1,5 +1,5 @@
 #!/bin/bash -x
-bundle install --path "${HOME}/bundles/${JOB_NAME}" --deployment
+bundle install --path "${HOME}/bundles/${JOB_NAME}" --deployment --without darwin
 bundle exec rake stats
 
 # DELETE STATIC SYMLINKS AND RECONNECT...
