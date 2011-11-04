@@ -26,7 +26,7 @@ class TravelAdviceSectionPresenter
   end
 
   def body_node(doc)
-    Loofah.fragment(@html_body).scrub!(style_scrubber)
+    Loofah.fragment(@html_body).scrub!(style_scrubber).scrub!(useless_tag_scrubber)
   end
 
   def header_node(doc)
@@ -38,6 +38,14 @@ class TravelAdviceSectionPresenter
   def style_scrubber
     @style_scrubber ||= Loofah::Scrubber.new do |node|
       node.remove_attribute('style')
+    end
+  end
+
+  def useless_tag_scrubber
+    @useless_tag_scrubber ||= Loofah::Scrubber.new do |node|
+      if node.name == 'a' && node['href'].blank?
+        node.replace node.inner_html
+      end
     end
   end
 

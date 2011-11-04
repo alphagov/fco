@@ -17,4 +17,17 @@ class TravelAdviceSectionPresenterTest < ActiveSupport::TestCase
     assert_equal "<h1>Hello World</h1><p>Hello <span>red</span> world.</p>", html
   end
 
+  test 'strips style useless a tags' do
+    section = {
+      'title' => "Hello World",
+      'section_markup_id' => 'helloWorld',
+      'body' => {
+        'markup' => "<p>Hello <a id=\"blah\">red</a> world.</p>"
+      }
+    }
+
+    html = TravelAdviceSectionPresenter.new(section).html
+    assert_equal "<h1>Hello World</h1><p>Hello red world.</p>", html
+  end
+
 end
