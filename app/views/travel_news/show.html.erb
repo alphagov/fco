@@ -1,5 +1,6 @@
 <section>
   <h1><%= @travel_news.title %></h1>
   <h2><%= @travel_news.description %></h2>
+  <p><%= long_format_date(@travel_news.published_at) %></p>
   <%= @travel_news.body_markup.html_safe %>
 </section>

@@ -5,4 +5,8 @@ module ApplicationHelper
     "/news/#{date.year}/#{"%02d" % date.month}/#{"%02d" % date.day}/#{news_item.slug}"
   end
 
+  def long_format_date(time)
+    "#{time.strftime("%A")} #{time.strftime("%d").to_i} #{time.strftime("%B %Y")}"
+  end
+
 end
