@@ -43,10 +43,10 @@ class APIImporter
           m.fco_id = embassy_json['fco_id']
           m.latitude = embassy_json['lat']
           m.longitude = embassy_json['long']
-          m.designation = embassy_json['designation']
+          m.designation = embassy_json['designation'].presence || "Unknown"
           m.office_hours = embassy_json['office_hours']['plain']
           m.address = embassy_json['address']['plain']
-          m.location_name = embassy_json['location_name']
+          m.location_name = embassy_json['location_name'].presence || "Unknown"
           m.phone = embassy_json['phone']
           m.save!
         end

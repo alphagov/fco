@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111101161517) do
+ActiveRecord::Schema.define(:version => 20111104112149) do
 
   create_table "countries", :force => true do |t|
     t.string "name"
@@ -37,9 +37,11 @@ ActiveRecord::Schema.define(:version => 20111101161517) do
     t.text    "office_hours"
     t.decimal "latitude",       :precision => 15, :scale => 10
     t.decimal "longitude",      :precision => 15, :scale => 10
+    t.string  "slug"
   end
 
   add_index "missions", ["fco_id"], :name => "index_missions_on_fco_id"
+  add_index "missions", ["slug"], :name => "index_missions_on_slug"
 
   create_table "travel_news", :force => true do |t|
     t.text     "body_plain"
