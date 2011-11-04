@@ -9,6 +9,6 @@ for d in images javascripts templates stylesheets; do
 done
 
 export DISPLAY=:99
-bundle exec rake ci:setup:testunit test
+bundle exec rake test
 RESULT=$?
 exit $RESULT
