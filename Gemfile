@@ -27,6 +27,7 @@ group :development do
 end
 
 group :test do
+  gem 'sqlite3-ruby', :require => false
   gem 'turn', :require => false
   gem 'webmock', :require => false
   gem 'mocha', :require => false
