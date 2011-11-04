@@ -45,12 +45,13 @@
         </ul>
       </div>
 
-      <div class="updates">
+      <div class="updates news">
         <h2>Recent updates</h2>
         <ul>
           <%- @travel_news.each do |news| -%>
             <li>
               <h3><%= link_to news.title, news_item_path(news) %></h3>
+              <h4 class="date"><%= news.published_at %></h4>
               <p><%= news.description %></p>
             </li>
           <%- end -%>
@@ -58,6 +59,22 @@
       </div>
   
     </div>
+  </div>
+  
+  <div class="related-positioning">
+  	<div class="related-container">
+   		<div class="related">
+  	     <div class="inner" class="group">
+  	       <h2>Related tools &amp; topics</h2>
+  	       <nav role="navigation">
+  	         <ul>
+  							some other stuff here
+                  <li class="related-topic"><a href="#">View more in <span>Some section &rarr;</span></a></li>
+  	         </ul>
+  	       </nav>
+  	     </div>
+  	   </div><!-- end .related -->
+  	</div>
   </div>
 
 </section>
