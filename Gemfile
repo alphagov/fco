@@ -1,5 +1,10 @@
 source 'http://rubygems.org'
 
+group :passenger_compatibility do
+  gem 'rack', '1.3.5'
+  gem 'rake', '0.9.2'
+end
+
 gem 'rails', '3.1.1'
 gem 'mysql2'
 gem 'jquery-rails'
@@ -7,7 +12,6 @@ gem 'rest-client'
 gem 'stringex'
 gem 'loofah'
 gem 'nokogiri'
-gem 'whenever'
 
 if ENV['SLIMMER_DEV']
   gem 'slimmer', :path => '../slimmer'
