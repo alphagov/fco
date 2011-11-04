@@ -14,19 +14,25 @@ else
   gem 'slimmer', :git => 'git@github.com:alphagov/slimmer.git'
 end
 
-group :development do
-  gem 'guard'
-  gem 'guard-minitest'
-
+group :darwin do
   if RUBY_PLATFORM =~ /darwin/i
     gem 'growl_notify'
     gem 'rb-fsevent'
   end
 end
 
+group :development do
+  gem 'guard'
+  gem 'guard-minitest'
+end
+
 group :test do
+  gem 'sqlite3-ruby', :require => false
   gem 'turn', :require => false
   gem 'webmock', :require => false
   gem 'mocha', :require => false
   gem 'minitest'
+  gem 'simplecov', '0.4.2'
+  gem 'simplecov-rcov'
+  gem 'ci_reporter'
 end
