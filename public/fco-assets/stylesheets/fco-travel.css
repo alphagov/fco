@@ -22,7 +22,7 @@
 
 /* temp until have autocomplete country search */
 .guidance-headline ul {
-	background: #ffffcc;
+	background: yellow;
 	height: 10em;
 	overflow: auto;
 }
@@ -38,6 +38,7 @@
 }
 
 .fco-home .guidance-headline h1 {
+	font-size: 1.5em;
 	text-align: center;
 }
 
@@ -48,4 +49,49 @@
 .fco-home .updates {
 	float: left;
 	width: 33.3%;
+}
+
+.fco-home .updates h2 {
+	font-size: 1.25em;
+}
+
+.fco-home .updates.news ul {
+	padding: 0;
+}
+
+.fco-home .updates.news ul li {
+	list-style: none;
+	margin: 0 0 1em 0;
+}
+
+.fco-home .updates.news ul li h3 {
+	font-size: 1em;
+}
+
+.fco-home .updates.news ul li h4 {
+  color: #666;
+  font-size: 0.8em;
+/*  font-weight: normal;*/
+  margin-bottom: 0;
+}
+
+.fco-home .updates.news ul li p {
+	font-size: 0.8em;
+	margin-top: 0.5em;
+}
+
+/* news pages */
+
+.fco-news article h1 {
+  font-size: 1.5em;
+}
+
+.fco-news article h2.date {
+  color: #666;
+  font-size: 1em;
+  margin-top: 0.5em;
+}
+
+.fco-news article .summary {
+  margin-top: 1.25em;
 }

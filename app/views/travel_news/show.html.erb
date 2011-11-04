@@ -1,4 +1,4 @@
-<section class="group">
+<section class="group fco-news">
   <header class="fco-header">
     <hgroup>
       <h1>
@@ -12,8 +12,8 @@
   <article>
     <div class="inner">
       <h1><%= @travel_news.title %></h1>
-      <h2><%= @travel_news.description %></h2>
-      <h3><%= long_format_date(@travel_news.published_at) %></h3>
+      <h2 class="date"><%= long_format_date(@travel_news.published_at) %></h2>
+      <div class="summary"><p><%= @travel_news.description %></p></div>
       <%= @travel_news.body_markup.html_safe %>
     </div>
   </article>
