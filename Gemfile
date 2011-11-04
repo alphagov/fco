@@ -7,7 +7,6 @@ gem 'rest-client'
 gem 'stringex'
 gem 'loofah'
 gem 'nokogiri'
-gem 'whenever'
 
 if ENV['SLIMMER_DEV']
   gem 'slimmer', :path => '../slimmer'
