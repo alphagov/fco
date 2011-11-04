@@ -29,4 +29,7 @@ group :test do
   gem 'webmock', :require => false
   gem 'mocha', :require => false
   gem 'minitest'
+  gem 'simplecov', '0.4.2'
+  gem 'simplecov-rcov'
+  gem 'ci_reporter'
 end
