@@ -1,4 +1,4 @@
-<section class="fco-home">
+<section class="group fco-home">
 
   <header class="fco-header">
     <hgroup>
@@ -51,7 +51,7 @@
           <%- @travel_news.each do |news| -%>
             <li>
               <h3><%= link_to news.title, news_item_path(news) %></h3>
-              <h4 class="date"><%= news.published_at %></h4>
+              <h4 class="date"><%= long_format_date(news.published_at) %></h4>
               <p><%= news.description %></p>
             </li>
           <%- end -%>
