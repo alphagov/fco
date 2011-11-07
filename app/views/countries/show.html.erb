@@ -1,3 +1,12 @@
+<%- content_for :head do %>
+  <%= stylesheet_link_tag "/fco-assets/stylesheets/leaflet.css" -%>
+  <%= javascript_include_tag "/fco-assets/javascripts/leaflet.js" -%>
+  <!--[if lte IE 8]><%= stylesheet_link_tag "/fco-assets/stylesheets/leaflet.ie.css" %><![endif]-->
+  <script defer>
+
+  </script>
+<%- end -%>
+
 <section class="group">
 
   <header class="fco-header">
