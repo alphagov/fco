@@ -48,15 +48,37 @@
 
 .fco-home .updates {
 	float: left;
-	width: 33.3%;
+	padding: 0 2%;
+/*  width: 29.3%;*/
+  width: 30.6%;
+}
+
+.fco-home .updates:first-child {
+  padding-left: 0;
+}
+.fco-home .updates:last-child {
+  padding-right: 0;
+}
+
+.lte-ie8 .fco-home .updates {
+	padding: 0 2%;
+  width: 29.3%;
 }
 
 .fco-home .updates h2 {
 	font-size: 1.25em;
 }
 
+.fco-home .updates ul {
+	padding: 0 0 0 1.5em;
+}
+
+.fco-home .updates ul li {
+  margin-bottom: 0.25em;
+}
+
 .fco-home .updates.news ul {
-	padding: 0;
+  padding: 0;
 }
 
 .fco-home .updates.news ul li {
