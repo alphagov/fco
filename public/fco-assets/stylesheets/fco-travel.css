@@ -82,11 +82,11 @@
 
 /* country pages */
 
-.article-container {
+.fco-country .article-container {
   margin-right: 20em;
 }
 
-.fco-presence-details {
+.country-details {
   background-color: #E5E5E5;
   border-top: solid 2px #bbb;
   float: right;
@@ -110,3 +110,8 @@ article h2.date {
 article .summary {
   margin-top: 1.25em;
 }
+
+article .advisory h2 {
+  margin: 0;
+}
+

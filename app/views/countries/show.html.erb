@@ -1,4 +1,4 @@
-<section class="group">
+<section class="group fco-country">
   
   <header class="fco-header">
     <hgroup>
@@ -11,6 +11,16 @@
     <article>
       <div class="inner">
         <h1><%= @country.name %></h1>
+        
+        <div class="advisory against-any-travel">
+          <h2>We advise against any travel to all of <%= @country.name %></h2>
+        </div>
+
+        <div class="advisory high-alert against-essential-travel">
+          <h2>We advise only essential travel to all of <%= @country.name %></h2>
+        </div>
+
+        <a href="#presence" class="visuallyhidden">Skip to information about the British presence in <%= @country.name %></a>
 
         <%- if [:all, :parts].include?(@country.avoid_travel_restriction) -%>
           <p>We advise against any travel to <%= @country.avoid_travel_restriction.to_s %> of <%= @country.name %>.</p>
@@ -27,11 +37,26 @@
     </article>
   </div>
   
-  <div class="fco-presence-details">
+  <div class="country-details">
     
-    <%- @missions.each do |mission| -%>
-      <%= debug mission -%>
-    <%- end -%>
+    <div class="country-info">
+      
+      
+
+      <div class="country-map">
+      
+      </div>
+    </div>
+    
+    <div class="presence-info" id="presence">
+    
+      <h2>British presence</h2>
+    
+      <%- @missions.each do |mission| -%>
+        <%= debug mission -%>
+      <%- end -%>
+    
+    </div
     
   </div>
 
