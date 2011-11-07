@@ -80,6 +80,26 @@
 	margin-top: 0.5em;
 }
 
+/* country pages */
+
+.fco-country .article-container {
+  margin-right: 20em;
+}
+
+.country-details {
+  background-color: #E5E5E5;
+  border-top: solid 2px #bbb;
+  float: right;
+  padding: 1em;
+  width: 18em;
+}
+
+.country-map {
+  background: yellow;
+  height: 10em;
+  width: 18em;
+}
+
 /* FCO article formatting */
 
 article h1 {
@@ -97,3 +117,8 @@ article h2.date {
 article .summary {
   margin-top: 1.25em;
 }
+
+article .advisory h2 {
+  margin: 0;
+}
+

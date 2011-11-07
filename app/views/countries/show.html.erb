@@ -7,8 +7,7 @@
   </script>
 <%- end -%>
 
-<section class="group">
-
+<section class="group fco-country">
   <header class="fco-header">
     <hgroup>
       <h1>Travel advice</h1>
@@ -16,27 +15,55 @@
     </hgroup>
   </header>
 
-  <article>
-    <div class="inner">
-      <h1><%= @country.name %></h1>
+  <div class="article-container">
+    <article>
+      <div class="inner">
+        <h1><%= @country.name %></h1>
 
-      <%- if [:all, :parts].include?(@country.avoid_travel_restriction) -%>
-        <p>We advise against any travel to <%= @country.avoid_travel_restriction.to_s %> of <%= @country.name %>.</p>
-      <%- end -%>
+        <%- if [:all, :parts].include?(@country.avoid_travel_restriction) -%>
+          <div class="advisory against-any-travel">
+            <h2>We advise against any travel to <%= @country.avoid_travel_restriction.to_s %> of <%= @country.name %>.</h2>
+          </div>
+        <%- end -%>
 
-      <%- if [:all, :parts].include?(@country.essential_travel_restriction) -%>
-        <p>We advise only essential travel to <%= @country.essential_travel_restriction.to_s %> of <%= @country.name %>.</p>
-      <%- end -%>
+        <%- if [:all, :parts].include?(@country.essential_travel_restriction) -%>
+          <div class="advisory high-alert against-essential-travel">
+            <h2>We advise only essential travel to <%= @country.essential_travel_restriction.to_s %> of <%= @country.name %>.</h2>
+          </div>
+        <%- end -%>
 
-      <%- @section_presenters.each do |section| -%>
-        <h2><%= section.title %></h2>
-        <%= section.body %>
-      <%- end -%>
+        <a href="#presence" class="visuallyhidden">Skip to information about the British presence in <%= @country.name %></a>
+
+        <%- @section_presenters.each do |section| -%>
+          <h2><%= section.title %></h2>
+          <%= section.body %>
+        <%- end -%>
+
+      </div>
+    </article>
+  </div>
+
+  <div class="country-details">
+
+    <div class="country-info">
+
+
+
+      <div class="country-map">
+
+      </div>
+    </div>
+
+    <div class="presence-info" id="presence">
+
+      <h2>British presence</h2>
 
       <%- @missions.each do |mission| -%>
         <%= debug mission -%>
       <%- end -%>
-    </div>
-  </article>
+
+    </div
+
+  </div>
 
 </section>
