@@ -11,16 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111104112149) do
+ActiveRecord::Schema.define(:version => 20111107152221) do
 
   create_table "countries", :force => true do |t|
     t.string "name"
     t.string "fco_id"
-    t.string "iso_3166_2"
+    t.string "iso_3166_1"
     t.string "slug"
     t.string "essential_travel_restriction"
     t.string "avoid_travel_restriction"
     t.text   "raw_travel_advice",            :limit => 2147483647
+    t.string "bounding_box"
   end
 
   add_index "countries", ["slug"], :name => "index_countries_on_slug", :unique => true

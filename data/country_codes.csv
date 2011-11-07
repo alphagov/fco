@@ -1,4 +1,4 @@
-fco_name,iso3611_2
+fco_name,iso3166_1
 Afghanistan,AF
 Albania,AL
 Algeria,DZ
@@ -10,7 +10,7 @@ Antigua and Barbuda,AG
 Argentina,AR
 Armenia,AM
 Aruba/Dutch Caribbean,AW
-Ascension Island,SH-AC
+Ascension Island,AC
 Australia,AU
 Austria,AT
 Azerbaijan,AZ
@@ -182,7 +182,7 @@ South Korea,KR
 South Sudan,SS
 Spain,ES
 Sri Lanka,LK
-St Helena,SH-SH
+St Helena,SH
 St Kitts and Nevis,KN
 St Lucia,LC
 St Pierre & Miquelon,PM
@@ -201,7 +201,7 @@ Timor-Leste,TL
 Togo,TG
 Tonga,TO
 Trinidad and Tobago,TT
-Tristan da Cunha,SH-TA
+Tristan da Cunha,TA
 Tunisia,TN
 Turkey,TR
 Turkmenistan,TM

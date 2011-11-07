@@ -13,8 +13,8 @@ class TravelAdviceSectionPresenterTest < ActiveSupport::TestCase
       }
     }
 
-    html = TravelAdviceSectionPresenter.new(section).html
-    assert_equal "<h1>Hello World</h1><p>Hello <span>red</span> world.</p>", html
+    html = TravelAdviceSectionPresenter.new(section).body
+    assert_equal "<p>Hello <span>red</span> world.</p>", html
   end
 
   test 'strips style useless a tags' do
@@ -26,8 +26,8 @@ class TravelAdviceSectionPresenterTest < ActiveSupport::TestCase
       }
     }
 
-    html = TravelAdviceSectionPresenter.new(section).html
-    assert_equal "<h1>Hello World</h1><p>Hello red world. <a href=\"http://example.com\">Preserve this link</a>.</p>", html
+    html = TravelAdviceSectionPresenter.new(section).body
+    assert_equal "<p>Hello red world. <a href=\"http://example.com\">Preserve this link</a>.</p>", html
   end
 
 end

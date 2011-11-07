@@ -9,7 +9,7 @@ class Country < ActiveRecord::Base
   validates :name, :presence => true
   validates :fco_id, :presence => true
   validates :slug, :presence => true
-  validates :iso_3166_2, :presence => true
+  validates :iso_3166_1, :presence => true
   validates :avoid_travel_restriction, :inclusion => { :in => TRAVEL_RESTRICTION_STATUSES, :allow_nil => true }
   validates :essential_travel_restriction, :inclusion => { :in => TRAVEL_RESTRICTION_STATUSES, :allow_nil => true }
 

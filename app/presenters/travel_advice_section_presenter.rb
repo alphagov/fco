@@ -7,26 +7,33 @@ class TravelAdviceSectionPresenter
     @section = section
     @plain_body = section['body']['plain']
     @html_body = section['body']['markup']
-    @internal_link = section['original_url']
+    @title = section['title']
   end
 
-  def html
-    build_document.to_html.html_safe
+  def body
+    build_body.to_html.html_safe
+  end
+
+  def title
+    @title.html_safe
   end
 
   private
 
-  def build_document
-    doc = Nokogiri::HTML::Document.new
-    Nokogiri::XML::DocumentFragment.new(doc).tap do |fragment|
-      fragment << header_node(doc)
-      fragment << body_node(doc)
-    end
-
+  def doc
+    @doc ||= Nokogiri::HTML::Document.new
   end
 
-  def body_node(doc)
-    Loofah.fragment(@html_body).scrub!(style_scrubber).scrub!(useless_tag_scrubber)
+  def build_body
+    Nokogiri::XML::DocumentFragment.new(doc).tap do |fragment|
+      fragment << body_node
+    end
+  end
+
+  def body_node
+    Loofah.fragment(@html_body).
+      scrub!(style_scrubber).
+      scrub!(useless_tag_scrubber)
   end
 
   def header_node(doc)

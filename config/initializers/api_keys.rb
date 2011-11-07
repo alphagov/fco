@@ -1,0 +1,1 @@
+API_KEYS = HashWithIndifferentAccess.new(YAML.load_file(File.join(Rails.root, 'config', 'api_keys.yml')))[Rails.env]
