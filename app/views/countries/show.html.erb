@@ -11,24 +11,20 @@
     <article>
       <div class="inner">
         <h1><%= @country.name %></h1>
-        
-        <div class="advisory against-any-travel">
-          <h2>We advise against any travel to all of <%= @country.name %></h2>
-        </div>
-
-        <div class="advisory high-alert against-essential-travel">
-          <h2>We advise only essential travel to all of <%= @country.name %></h2>
-        </div>
-
-        <a href="#presence" class="visuallyhidden">Skip to information about the British presence in <%= @country.name %></a>
 
         <%- if [:all, :parts].include?(@country.avoid_travel_restriction) -%>
-          <p>We advise against any travel to <%= @country.avoid_travel_restriction.to_s %> of <%= @country.name %>.</p>
+          <div class="advisory against-any-travel">
+            <h2>We advise against any travel to <%= @country.avoid_travel_restriction.to_s %> of <%= @country.name %>.</h2>
+          </div>
         <%- end -%>
 
         <%- if [:all, :parts].include?(@country.essential_travel_restriction) -%>
-          <p>We advise only essential travel to <%= @country.essential_travel_restriction.to_s %> of <%= @country.name %>.</p>
+          <div class="advisory high-alert against-essential-travel">
+            <h2>We advise only essential travel to <%= @country.essential_travel_restriction.to_s %> of <%= @country.name %>.</h2>
+          </div>
         <%- end -%>
+        
+        <a href="#presence" class="visuallyhidden">Skip to information about the British presence in <%= @country.name %></a>
 
         <%- @section_presenters.each do |section| -%>
           <h2><%= section.title %></h2>

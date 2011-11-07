@@ -90,7 +90,14 @@
   background-color: #E5E5E5;
   border-top: solid 2px #bbb;
   float: right;
-  width: 20em;
+  padding: 1em;
+  width: 18em;
+}
+
+.country-map {
+  background: yellow;
+  height: 10em;
+  width: 18em;
 }
 
 /* FCO article formatting */
