@@ -80,6 +80,19 @@
 	margin-top: 0.5em;
 }
 
+/* country pages */
+
+.article-container {
+  margin-right: 20em;
+}
+
+.fco-presence-details {
+  background-color: #E5E5E5;
+  border-top: solid 2px #bbb;
+  float: right;
+  width: 20em;
+}
+
 /* FCO article formatting */
 
 article h1 {
