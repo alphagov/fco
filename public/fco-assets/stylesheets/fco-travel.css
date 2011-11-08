@@ -154,8 +154,19 @@ article h2.date {
   margin-top: 0.5em;
 }
 
-article .summary {
-  margin-top: 1.25em;
+article .not-final-formatting .NewsHeader {
+	background: url(/images/summary-arrow.png) no-repeat 0 0;
+  font-size: 1.15em;
+	font-weight: bold;
+  line-height: 1.25em;
+	margin: 1.25em 0.75em 1.25em 0;
+	min-height: 1.75em;
+	padding: 0.25em 0 0 1.5em;
+}
+
+article .not-final-formatting img {
+  float: right;
+  margin: 1em 0 1em 1em;
 }
 
 article .advisory h2 {
