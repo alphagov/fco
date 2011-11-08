@@ -30,9 +30,6 @@ $(document).ready(function() {
       var southWest = new L.LatLng(south, west);
           northEast = new L.LatLng(north, east);
 
-      console.log(southWest);
-      console.log(northEast);
-
       var bounds = new L.LatLngBounds(southWest, northEast);
 
       map.fitBounds(bounds);
