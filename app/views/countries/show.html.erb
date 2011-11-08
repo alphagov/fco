@@ -1,10 +1,7 @@
-<%- content_for :head do %>
+<%= content_for :head do -%>
   <%= stylesheet_link_tag "/fco-assets/stylesheets/leaflet.css" -%>
-  <%= javascript_include_tag "/fco-assets/javascripts/leaflet.js" -%>
-  <!--[if lte IE 8]><%= stylesheet_link_tag "/fco-assets/stylesheets/leaflet.ie.css" %><![endif]-->
-  <script defer>
-
-  </script>
+  <script defer src="/fco-assets/javascripts/leaflet.js"></script>
+  <script defer src="/fco-assets/javascripts/map.js"></script>
 <%- end -%>
 
 <section class="group fco-country">
@@ -45,14 +42,7 @@
 
   <div class="country-details">
 
-    <div class="country-info">
-
-
-
-      <div class="country-map">
-
-      </div>
-    </div>
+    <div class="country-info" <%- if @country.bounding_box.present? -%>data-bounding-box="<%= @country.bounding_box %>"<%- end -%> />
 
     <div class="presence-info" id="presence">
 
