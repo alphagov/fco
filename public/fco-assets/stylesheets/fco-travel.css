@@ -117,9 +117,23 @@
 }
 
 .country-map {
-  background: yellow;
   height: 10em;
   width: 18em;
+}
+
+.presence-info h2 {
+  margin: 1em 0 0.5em 0;
+}
+
+.presence {
+  border-bottom: solid 1px #bbb;
+  margin: 1em 0 0 0;
+  padding: 0 0 0.5em 0;
+}
+
+.presence p {
+  font-size: 0.8em;
+  margin: 0.5em 0;
 }
 
 /* FCO article formatting */
