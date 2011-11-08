@@ -1,5 +1,10 @@
-<section class="group fco-country">
+<%= content_for :head do -%>
+  <%= stylesheet_link_tag "/fco-assets/stylesheets/leaflet.css" -%>
+  <script defer src="/fco-assets/javascripts/leaflet.js"></script>
+  <script defer src="/fco-assets/javascripts/map.js"></script>
+<%- end -%>
 
+<section class="group fco-country">
   <header class="fco-header">
     <hgroup>
       <h1>Travel advice</h1>
@@ -23,29 +28,22 @@
             <h2>We advise only essential travel to <%= @country.essential_travel_restriction.to_s %> of <%= @country.name %>.</h2>
           </div>
         <%- end -%>
-        
+
         <a href="#presence" class="visuallyhidden">Skip to information about the British presence in <%= @country.name %></a>
 
         <%- @section_presenters.each do |section| -%>
           <h2><%= section.title %></h2>
           <%= section.body %>
         <%- end -%>
-      
+
       </div>
     </article>
   </div>
-  
-  <div class="country-details">
-    
-    <div class="country-info">
-      
-      
 
-      <div class="country-map">
-      
-      </div>
-    </div>
-    
+  <div class="country-details">
+
+    <div class="country-info" <%- if @country.bounding_box.present? -%>data-bounding-box="<%= @country.bounding_box %>"<%- end -%> />
+
     <div class="presence-info" id="presence">
     
       <h2>British presence in <%= @country.name %></h2>
@@ -95,9 +93,9 @@
       <%- @missions.each do |mission| -%>
         <%= debug mission -%>
       <%- end -%>
-    
+
     </div
-    
+
   </div>
 
 </section>

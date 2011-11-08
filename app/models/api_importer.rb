@@ -119,8 +119,9 @@ class APIImporter
   def import_country_metadata
     Country.transaction do
       Country.find_each do |country|
+        Rails.logger.debug "Importing metadata for country code #{country.iso_3166_1}"
         bbox = fetch_bounding_box(country.iso_3166_1)
-        country.bounding_box = bbox.join(",")
+        country.bounding_box = bbox.try(:join, ",")
         country.save!
       end
     end
@@ -175,6 +176,7 @@ class APIImporter
     case country_code
     when 'AC'
     when 'TA'
+    when 'SS'
     else
       woeid = fetch_woeid(country_code)
       response = RestClient.get("http://where.yahooapis.com/v1/place/#{woeid}?format=json&appid=#{API_KEYS[:yahoo]}")

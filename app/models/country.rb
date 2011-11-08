@@ -33,4 +33,24 @@ class Country < ActiveRecord::Base
     JSON.parse(json) if json
   end
 
+  def bounding_box_north
+    bounding_box_array.try(:[], 3)
+  end
+
+  def bounding_box_south
+    bounding_box_array.try(:[], 1)
+  end
+
+  def bounding_box_east
+    bounding_box_array.try(:[], 2)
+  end
+
+  def bounding_box_west
+    bounding_box_array.try(:[], 0)
+  end
+
+  def bounding_box_array
+    bounding_box.try(:split, ',')
+  end
+
 end
