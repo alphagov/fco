@@ -131,6 +131,10 @@
   padding: 0 0 0.5em 0;
 }
 
+.presence h4.location {
+  margin-top: 0.25em;
+}
+
 .presence p {
   font-size: 0.8em;
   margin: 0.5em 0;
