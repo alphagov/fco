@@ -21,6 +21,17 @@
 
       <div class="updates">
         <h2>Avoid all travel to</h2>
+        
+        <h3>All of</h3>
+        <ul>
+          <%- @avoid_travel_countries.each do |country| -%>
+            <li>
+              <%= link_to "#{country.avoid_travel_restriction.to_s.titlecase} of #{country.name}", country_path(country) %>
+            </li>
+          <%- end -%>
+        </ul>
+
+        <h3>Parts of</h3>
         <ul>
           <%- @avoid_travel_countries.each do |country| -%>
             <li>
@@ -32,6 +43,17 @@
 
       <div class="updates">
         <h2>Essential travel only to</h2>
+        
+        <h3>All of</h3>
+        <ul>
+          <%- @essential_travel_countries.each do |country| -%>
+            <li>
+              <%= link_to "#{country.essential_travel_restriction.to_s.titlecase} of #{country.name}", country_path(country) %>
+            </li>
+          <%- end -%>
+        </ul>
+        
+        <h3>Parts of</h3>
         <ul>
           <%- @essential_travel_countries.each do |country| -%>
             <li>
