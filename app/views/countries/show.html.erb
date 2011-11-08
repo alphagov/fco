@@ -45,56 +45,28 @@
     <div class="country-info" <%- if @country.bounding_box.present? -%>data-bounding-box="<%= @country.bounding_box %>"<%- end -%> />
 
     <div class="presence-info" id="presence">
-    
-      <h2>British presence in <%= @country.name %></h2>
-    
-      <div class="presence">
-        <h3 class="designation">British Council</h3>
-        <h4 class="location">Tokyo</h4>
-        <p class="telephone">Telephone: 012345 678910</p>
-        <p class="address">
-          1-2 Kagurazaka<br>
-          Shinjyuku-ku<br>
-          Tokyo 162-0825
-        </p>
-        <p class="opening-hours">
-          GMT: Monday-Friday 0000-0800<br>
-          Local Time: Monday-Friday 0900-1700
-        </p>
-      </div>
-      
-      <div class="presence">
-        <h3 class="designation">British Embassy</h3>
-        <h4 class="location">Tokyo</h4>
-        <p class="url"><a href="http://www.fco.gov.uk/en/travel-and-living-abroad/find-an-embassy/asia-and-oceania/embassy-tokyo">Website</a></p>
-        <p class="email">Email: embassy.tokyo@fco.gov.uk</p>
-        <p class="address">
-          No 1 Ichiban-cho<br>
-          Chiyoda-ku<br>
-          Tokyo 102-8381
-        </p>
-        <p class="opening-hours">The British Embassy is open 09:30-16:30, Monday to Friday and closed for weekends.</p>
-      </div>
-      
-      <div class="presence">
-        <h3 class="designation">British Consulate-General</h3>
-        <h4 class="location">Osaka</h4>
-        <p class="url"><a href="http://www.fco.gov.uk/en/travel-and-living-abroad/find-an-embassy/asia-and-oceania/consulate-general-osaka">Website</a></p>
-        <p class="email">Email: bcgosaka@fco.gov.uk</p>
-        <p class="address">
-          Epson Osaka Building 19F<br>
-          3-5-1 Bakuro-machi<br>
-          Chuo-ku<br>
-          Osaka 541 - 0059
-        </p>
-        <p class="opening-hours">Monday-Friday 09:30-12:00 / 13:00-17:00</p>
-      </div>
-    
-      <%- @missions.each do |mission| -%>
-        <%= debug mission -%>
-      <%- end -%>
 
-    </div
+      <h2>British presence in <%= @country.name %></h2>
+
+      <%- @missions.each do |mission| -%>
+        <div class="presence">
+          <h3 class="designation"><%= mission.designation %></h3>
+          <h4 class="location"><%= mission.location_name %></h4>
+          <%- if mission.url.present? -%>
+            <p class="url"><a href="<%= mission.url -%>">Website</a></p>
+          <%- end -%>
+          <%- if mission.phone.present? -%>
+            <p class="telephone">Telephone: <%= mission.phone -%></p>
+          <%- end -%>
+          <%- if mission.address.present? -%>
+            <p class="address"><%= mission.address -%></p>
+          <%- end -%>
+          <%- if mission.office_hours.present? -%>
+            <p class="opening-hours"><%= mission.office_hours -%></p>
+          <%- end -%>
+        </div>
+      <%- end -%>
+    </div>
 
   </div>
 
