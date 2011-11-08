@@ -40,15 +40,20 @@ class APIImporter
         country_json['country']['embassies'].each do |embassy_json|
           m = country.missions.new
           m.email = embassy_json['email']
-          m.url = embassy_json['original_url']
+
+          # if there's no URL, then the API sets a default URL - we don't want this
+          if embassy_json['original_url'] !=  'http://www.fco.gov.uk/'
+            m.url = embassy_json['original_url']
+          end
+
           m.fco_id = embassy_json['fco_id']
           m.latitude = embassy_json['lat']
           m.longitude = embassy_json['long']
-          m.designation = embassy_json['designation'].presence || "Unknown"
+          m.designation = embassy_json['designation'].presence
           m.office_hours = embassy_json['office_hours']['plain']
           m.address = embassy_json['address']['plain']
-          m.location_name = embassy_json['location_name'].presence || "Unknown"
-          m.phone = embassy_json['phone']
+          m.location_name = embassy_json['location_name'].presence
+          m.phone = embassy_json['phone'].presence
           m.save!
         end
       end

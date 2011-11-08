@@ -59,10 +59,10 @@
             <p class="telephone">Telephone: <%= mission.phone -%></p>
           <%- end -%>
           <%- if mission.address.present? -%>
-            <p class="address"><%= mission.address -%></p>
+            <p class="address"><%= simple_format(mission.address) -%></p>
           <%- end -%>
           <%- if mission.office_hours.present? -%>
-            <p class="opening-hours"><%= mission.office_hours -%></p>
+            <p class="opening-hours"><%= simple_format(mission.office_hours) -%></p>
           <%- end -%>
         </div>
       <%- end -%>
