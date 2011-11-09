@@ -20,46 +20,31 @@
 
       <div class="updates">
         <h2>Avoid all travel to</h2>
-        
-        <h3>All of</h3>
-        <ul>
-          <%- @avoid_travel_countries.each do |country| -%>
-            <li>
-              <%= link_to "#{country.avoid_travel_restriction.to_s.titlecase} of #{country.name}", country_path(country) %>
-            </li>
-          <%- end -%>
-        </ul>
-
-        <h3>Parts of</h3>
-        <ul>
-          <%- @avoid_travel_countries.each do |country| -%>
-            <li>
-              <%= link_to "#{country.avoid_travel_restriction.to_s.titlecase} of #{country.name}", country_path(country) %>
-            </li>
-          <%- end -%>
-        </ul>
+        <%- @avoid_travel_countries.group_by(&:avoid_travel_restriction).each do |restriction, countries| -%>
+          <h3><%= restriction.to_s.titlecase -%> of</h3>
+          <ul>
+            <%- countries.each do |country| -%>
+              <li>
+                <%= link_to country.name, country_path(country) %>
+              </li>
+            <%- end -%>
+          </ul>
+        <%- end -%>
       </div>
 
       <div class="updates">
         <h2>Essential travel only to</h2>
-        
-        <h3>All of</h3>
-        <ul>
-          <%- @essential_travel_countries.each do |country| -%>
-            <li>
-              <%= link_to "#{country.essential_travel_restriction.to_s.titlecase} of #{country.name}", country_path(country) %>
-            </li>
-          <%- end -%>
-        </ul>
-        
-        <h3>Parts of</h3>
-        <ul>
-          <%- @essential_travel_countries.each do |country| -%>
-            <li>
-              <%= link_to "#{country.essential_travel_restriction.to_s.titlecase} of #{country.name}", country_path(country) %>
-            </li>
-          <%- end -%>
-        </ul>
+        <%- @essential_travel_countries.group_by(&:essential_travel_restriction).each do |restriction, countries| -%>
+          <h3><%= restriction.to_s.titlecase -%> of</h3>
+          <ul>
+            <%- countries.each do |country| -%>
+              <li>
+                <%= link_to country.name, country_path(country) %>
+              </li>
+            <%- end -%>
+          </ul>
+        <%- end -%>
+
       </div>
 
       <div class="updates news">
@@ -74,10 +59,9 @@
           <%- end -%>
         </ul>
       </div>
-  
     </div>
   </div>
-  
+
   <div class="related-positioning">
   	<div class="related-container">
    		<div class="related">
