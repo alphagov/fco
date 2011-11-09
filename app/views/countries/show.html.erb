@@ -28,7 +28,9 @@
           </div>
         <%- end -%>
 
-        <a href="#presence" class="visuallyhidden">Skip to information about the British presence in <%= @country.name %></a>
+        <%- if @missions.any? -%>
+          <a href="#presence" class="visuallyhidden">Skip to information about the British presence in <%= @country.name %></a>
+        <%- end -%>
 
         <%- @section_presenters.each do |section| -%>
           <h2><%= section.title %></h2>
@@ -41,7 +43,7 @@
 
   <div class="country-details">
 
-    <div class="country-info" data-iso-code="<%= @country.iso_3166_1 %>" <%- if @country.bounding_box.present? -%>data-bounding-box="<%= @country.bounding_box %>"<%- end -%> />
+    <div class="country-info" data-country-name="<%= @country.name %>" data-iso-code="<%= @country.iso_3166_1 %>" <%- if @country.bounding_box.present? -%>data-bounding-box="<%= @country.bounding_box %>"<%- end -%> />
 
     <%- if @missions.any? -%>
       <div class="presence-info" id="presence">

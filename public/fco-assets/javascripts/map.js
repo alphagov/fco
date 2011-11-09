@@ -2,9 +2,12 @@ $(document).ready(function() {
   if ($('section.fco-country').length > 0) {
     var countryInfoElement = $('div.country-info');
     var boundingBox = countryInfoElement.data('bounding-box');
+    var countryName = countryInfoElement.data('country-name');
 
     if (boundingBox) {
-      $('.country-info').prepend($('<div id="country-map" class="country-map" />'));
+      var countryInfo = $('.country-info');
+      $('<div id="country-map" class="country-map" />').appendTo(countryInfo);
+      $('<p class="map-caption" />').text("Map of "+countryName).appendTo(countryInfo);
 
       var coastlinesUrl = 'http://tiles.alphagov.co.uk/coastlines/{z}/{x}/{y}.png',
           coastlines = new L.TileLayer(coastlinesUrl, {maxZoom: 8});
