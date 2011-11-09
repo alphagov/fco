@@ -5,6 +5,10 @@
   <script defer src="/fco-assets/javascripts/map.js"></script>
 <%- end -%>
 
+<%= content_for :title do -%>
+<%= @country.name -%>
+<%- end -%>
+
 <section class="group fco-country">
   <header class="fco-header">
     <hgroup>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Travel advice</title>
+    <title><%- if content_for?(:title) -%><%= yield :title %> | <%- end -%>Travel Advice | www.gov.uk</title>
     <%= stylesheet_link_tag "/fco-assets/stylesheets/fco-travel" %>
     <meta name="x-section-name" content="Travel" />
     <meta name="x-section-link" content="/travel" />
