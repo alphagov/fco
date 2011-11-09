@@ -31,7 +31,8 @@ $(document).ready(function() {
         color: '#ffbd30',
         fillColor: '#ffbd30',
         weight: 1,
-        fillOpacity: 1.0
+        fillOpacity: 1.0,
+        clickable: false
       });
     });
 
