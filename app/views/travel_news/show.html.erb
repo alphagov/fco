@@ -2,8 +2,7 @@
 
   <header class="fco-header">
     <hgroup>
-      <h1>Travel advice</h1>
-      <h2>From the Foreign &amp; Commonwealth Office</h2>
+      <h1><a href="/" title="Back to travel advice home page">Travel advice</a></h1>
     </hgroup>
   </header>
   
@@ -11,8 +10,8 @@
     <div class="inner">
       <h1><%= @travel_news.title %></h1>
       <h2 class="date"><%= long_format_date(@travel_news.published_at) %></h2>
-      <div class="summary"><p><%= @travel_news.description %></p></div>
-      <%= @travel_news.body_markup.html_safe %>
+      <!--  we'll bring this back when we have cleaner data <div class="summary"><p><%= @travel_news.description %></p></div> -->
+      <div class="not-final-formatting"><%= @travel_news.body_markup.html_safe %></div>
     </div>
   </article>
 </section>

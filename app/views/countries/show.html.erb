@@ -7,8 +7,7 @@
 <section class="group fco-country">
   <header class="fco-header">
     <hgroup>
-      <h1>Travel advice</h1>
-      <h2>From the Foreign &amp; Commonwealth Office</h2>
+      <h1><a href="/" title="Back to travel advice home page">Travel advice</a></h1>
     </hgroup>
   </header>
 
@@ -46,7 +45,7 @@
 
     <div class="presence-info" id="presence">
 
-      <h2>British presence in <%= @country.name %></h2>
+      <h2>British presence in <%= @country.name %></h2><!-- can we put a conditional on this? -->
 
       <%- @missions.each do |mission| -%>
         <div class="presence">
