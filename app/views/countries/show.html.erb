@@ -42,7 +42,7 @@
 
   <div class="country-details">
 
-    <div class="country-info" <%- if @country.bounding_box.present? -%>data-bounding-box="<%= @country.bounding_box %>"<%- end -%> />
+    <div class="country-info" data-iso-code="<%= @country.iso_3166_1 %>" <%- if @country.bounding_box.present? -%>data-bounding-box="<%= @country.bounding_box %>"<%- end -%> />
 
     <div class="presence-info" id="presence">
 

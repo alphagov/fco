@@ -6,11 +6,8 @@ $(document).ready(function() {
     if (boundingBox) {
       $('.country-info').prepend($('<div id="country-map" class="country-map" />'));
 
-      var boundingBoxArray = boundingBox.split(',');
-
-      var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/bcad1b026ce64e2ab602c9fb3ff38c88/997/256/{z}/{x}/{y}.png',
-          cloudmadeAttribution = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
-          cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18});
+      var coastlinesUrl = 'http://tiles.alphagov.co.uk/coastlines/{z}/{x}/{y}.png',
+          coastlines = new L.TileLayer(coastlinesUrl, {maxZoom: 8});
 
       var map = new L.Map('country-map', {
         attributionControl: false,
@@ -20,7 +17,10 @@ $(document).ready(function() {
         scrollWheelZoom: false,
         doubleClickZoom: false
       });
-      map.addLayer(cloudmade);
+
+      map.addLayer(coastlines);
+
+      var boundingBoxArray = boundingBox.split(',');
 
       var west = parseFloat(boundingBoxArray[0]),
           south = parseFloat(boundingBoxArray[1]),
@@ -33,6 +33,30 @@ $(document).ready(function() {
       var bounds = new L.LatLngBounds(southWest, northEast);
 
       map.fitBounds(bounds);
+
+      if (map.getZoom() > 5) {
+        map.setZoom(5);
+      }
+
+      var countryCode = countryInfoElement.data('iso-code');
+      var borderJsonUrl = "/fco-assets/borders/"+countryCode+".json";
+
+      $.ajax(borderJsonUrl).success(function(data) {
+        var geojson = new L.GeoJSON();
+
+        geojson.on("featureparse", function(e) {
+          e.layer.setStyle({
+            color: '#ffbd30',
+            fillColor: '#ffbd30',
+            weight: 1,
+            fillOpacity: 1.0
+          });
+        });
+
+        geojson.addGeoJSON(data);
+
+        map.addLayer(geojson);
+      });
     }
   }
 });
