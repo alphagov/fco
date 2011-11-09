@@ -121,8 +121,17 @@
   width: 18em;
 }
 
+.map-caption {
+  border-bottom: solid 1px #bbb;
+  font-size: 0.8em;
+  margin: 0.25em 0 0 0;
+  padding-bottom: 0.75em;
+}
+
 .presence-info h2 {
-  margin: 1em 0 0.5em 0;
+/*  border-top: solid 2px #bbb;*/
+  margin: 0.5em 0 0.5em 0;
+/*  padding-top: 0.25em;*/
 }
 
 .presence {
