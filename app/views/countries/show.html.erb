@@ -43,29 +43,31 @@
 
     <div class="country-info" data-iso-code="<%= @country.iso_3166_1 %>" <%- if @country.bounding_box.present? -%>data-bounding-box="<%= @country.bounding_box %>"<%- end -%> />
 
-    <div class="presence-info" id="presence">
+    <%- if @missions.any? -%>
+      <div class="presence-info" id="presence">
 
-      <h2>British presence in <%= @country.name %></h2><!-- can we put a conditional on this? -->
+        <h2>British presence in <%= @country.name %></h2>
 
-      <%- @missions.each do |mission| -%>
-        <div class="presence">
-          <h3 class="designation"><%= mission.designation %></h3>
-          <h4 class="location"><%= mission.location_name %></h4>
-          <%- if mission.url.present? -%>
-            <p class="url"><a href="<%= mission.url -%>">Website</a></p>
-          <%- end -%>
-          <%- if mission.phone.present? -%>
-            <p class="telephone">Telephone: <%= mission.phone -%></p>
-          <%- end -%>
-          <%- if mission.address.present? -%>
-            <p class="address"><%= simple_format(mission.address) -%></p>
-          <%- end -%>
-          <%- if mission.office_hours.present? -%>
-            <p class="opening-hours"><%= simple_format(mission.office_hours) -%></p>
-          <%- end -%>
-        </div>
-      <%- end -%>
-    </div>
+        <%- @missions.each do |mission| -%>
+          <div class="presence">
+            <h3 class="designation"><%= mission.designation %></h3>
+            <h4 class="location"><%= mission.location_name %></h4>
+            <%- if mission.url.present? -%>
+              <p class="url"><a href="<%= mission.url -%>">Website</a></p>
+            <%- end -%>
+            <%- if mission.phone.present? -%>
+              <p class="telephone">Telephone: <%= mission.phone -%></p>
+            <%- end -%>
+            <%- if mission.address.present? -%>
+              <p class="address"><%= simple_format(mission.address) -%></p>
+            <%- end -%>
+            <%- if mission.office_hours.present? -%>
+              <p class="opening-hours"><%= simple_format(mission.office_hours) -%></p>
+            <%- end -%>
+          </div>
+        <%- end -%>
+      </div>
+    <%- end -%>
 
   </div>
 
