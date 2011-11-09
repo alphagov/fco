@@ -6,12 +6,14 @@
     </hgroup>
   </header>
 
-  <article>
-    <div class="inner">
-      <h1><%= @travel_news.title %></h1>
-      <h2 class="date"><%= long_format_date(@travel_news.published_at) %></h2>
-      <!--  we'll bring this back when we have cleaner data <div class="summary"><p><%= @travel_news.description %></p></div> -->
-      <div class="not-final-formatting"><%= @travel_news.body_markup.html_safe %></div>
-    </div>
-  </article>
+  <div class="article-container">
+    <article>
+      <div class="inner">
+        <h1><%= @travel_news.title %></h1>
+        <h2 class="date"><%= long_format_date(@travel_news.published_at) %></h2>
+        <!--  we'll bring this back when we have cleaner data <div class="summary"><p><%= @travel_news.description %></p></div> -->
+        <div class="not-final-formatting"><%= @travel_news.body_markup.html_safe %></div>
+      </div>
+    </article>
+  </div>
 </section>

@@ -149,6 +149,12 @@
   margin: 0.5em 0;
 }
 
+/* travel news pages */
+
+.fco-news .article-container {
+  margin-right: 12em;
+}
+
 /* FCO article formatting */
 
 article h1 {
@@ -175,7 +181,7 @@ article .not-final-formatting .NewsHeader {
 
 article .not-final-formatting img {
   float: right;
-  margin: 1em 0 2em 2em;
+  margin: 0.5em 0 2em 2em;
 }
 
 article .advisory h2 {
