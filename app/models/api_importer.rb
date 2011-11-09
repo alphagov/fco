@@ -19,7 +19,6 @@ class APIImporter
       import_travel_advice
       import_travel_news
       import_advice_statuses
-      import_country_metadata
     end
   end
 
@@ -121,17 +120,6 @@ class APIImporter
     end
   end
 
-  def import_country_metadata
-    Country.transaction do
-      Country.find_each do |country|
-        Rails.logger.debug "Importing metadata for country code #{country.iso_3166_1}"
-        bbox = fetch_bounding_box(country.iso_3166_1)
-        country.bounding_box = bbox.try(:join, ",")
-        country.save!
-      end
-    end
-  end
-
   private
 
   def fetch_countries
@@ -175,32 +163,6 @@ class APIImporter
         end
       end
     end
-  end
-
-  def fetch_bounding_box(country_code)
-    case country_code
-    when 'AC'
-    when 'TA'
-    when 'SS'
-    else
-      woeid = fetch_woeid(country_code)
-      response = RestClient.get("http://where.yahooapis.com/v1/place/#{woeid}?format=json&appid=#{API_KEYS[:yahoo]}")
-      json = JSON.parse(response.body)
-
-      bbox_json = json['place']['boundingBox']
-      # left, bottom, right, top
-      [
-        bbox_json['southWest']['longitude'],
-        bbox_json['southWest']['latitude'],
-        bbox_json['northEast']['longitude'],
-        bbox_json['northEast']['latitude']
-      ]
-    end
-  end
-
-  def fetch_woeid(country_code)
-    response = RestClient.get("http://where.yahooapis.com/v1/concordance/iso/#{country_code}?format=json&appid=#{API_KEYS[:yahoo]}")
-    JSON.parse(response.body)['woeid']
   end
 
   def normalize_country_name(name)

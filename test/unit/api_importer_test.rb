@@ -45,18 +45,4 @@ class APIImporterTest < ActiveSupport::TestCase
     assert_equal :parts, Country.find_by_iso_3166_1!("AF").avoid_travel_restriction
   end
 
-  test '.import_country_metadata' do
-    country = Country.create!(:name => "United Kingdom", :fco_id => "united-kingdom", :iso_3166_1 => "GB", :slug => "united-kingdom")
-
-    stub_request(:get, "http://where.yahooapis.com/v1/concordance/iso/GB?format=json&appid=#{API_KEYS[:yahoo]}").
-      to_return(:body => File.new(asset_path('country_concordance.json')))
-
-    stub_request(:get, "http://where.yahooapis.com/v1/place/23424975?format=json&appid=#{API_KEYS[:yahoo]}").
-      to_return(:body => File.new(asset_path('country_woeid.json')))
-
-    APIImporter.new.import_country_metadata
-    country.reload
-    assert_equal "-13.41393,49.16209,1.76896,60.854691", country.bounding_box
-  end
-
 end

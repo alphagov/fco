@@ -1,6 +1,7 @@
 <%= content_for :head do -%>
   <%= stylesheet_link_tag "/fco-assets/stylesheets/leaflet.css" -%>
   <script defer src="/fco-assets/javascripts/leaflet.js"></script>
+  <script defer src="/fco-assets/javascripts/geoff.js"></script>
   <script defer src="/fco-assets/javascripts/map.js"></script>
 <%- end -%>
 
@@ -43,7 +44,7 @@
 
   <div class="country-details">
 
-    <div class="country-info" data-country-name="<%= @country.name %>" data-iso-code="<%= @country.iso_3166_1 %>" <%- if @country.bounding_box.present? -%>data-bounding-box="<%= @country.bounding_box %>"<%- end -%> />
+    <div class="country-info" data-country-name="<%= @country.name %>" data-iso-code="<%= @country.iso_3166_1 %>" />
 
     <%- if @missions.any? -%>
       <div class="presence-info" id="presence">
