@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20111109141541) do
     t.string "slug"
     t.string "essential_travel_restriction"
     t.string "avoid_travel_restriction"
-    t.text   "raw_travel_advice",            :limit => 2147483647
+    t.text   "raw_travel_advice",            :limit => 4294967295
   end
 
   add_index "countries", ["slug"], :name => "index_countries_on_slug", :unique => true
