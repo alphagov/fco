@@ -2,6 +2,7 @@
 
 touch config/api_keys.yml
 
+bundle exec rake db:migrate
 bundle install --path "${HOME}/bundles/${JOB_NAME}" --without darwin
 bundle exec rake stats
 
