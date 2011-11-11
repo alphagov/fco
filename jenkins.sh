@@ -1,4 +1,7 @@
 #!/bin/bash -x
+
+touch config/api_keys.yml
+
 bundle install --path "${HOME}/bundles/${JOB_NAME}" --without darwin
 bundle exec rake stats
 
