@@ -13,4 +13,5 @@ Fco::Application.routes.draw do
       :via => :get
   end
 
+  root :to => redirect("/travel_advice")
 end
