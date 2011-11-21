@@ -9,7 +9,7 @@
   <div class="content with-related">
     <div class="guidance-headline">
       <h1>Where are you travelling to?</h1>
-      <ul>
+      <ul id="travelling-to">
         <%- @countries.each do |country| -%>
           <li><%= link_to country.name, country_path(country) %></li>
         <%- end -%>
@@ -79,3 +79,5 @@
   </div>
 
 </section>
+<script defer src="/fco-assets/javascripts/country-autocomplete.js"></script>
+
