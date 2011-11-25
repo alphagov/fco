@@ -53,4 +53,12 @@ class Country < ActiveRecord::Base
     bounding_box.try(:split, ',')
   end
 
+  def indexable_content
+    sections = raw_travel_advice && raw_travel_advice["travel_advice_sections"]
+    return "" unless sections
+    sections.inject(missions.map(&:address)) { |acc, advice|
+      acc.concat([advice["title"], advice["body"]["plain"]])
+    }.join(" ")
+  end
+
 end
