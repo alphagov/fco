@@ -14,6 +14,7 @@ gem 'loofah'
 gem 'nokogiri'
 gem 'whenever'
 gem 'plek', '0.1.5'
+gem 'rummageable', :git => 'git@github.com:alphagov/rummageable.git'
 
 if ENV['SLIMMER_DEV']
   gem 'slimmer', :path => '../slimmer'
