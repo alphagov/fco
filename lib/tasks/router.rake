@@ -25,9 +25,9 @@ namespace :router do
 
   task :register_routes => [ :router_environment, :environment ] do
     begin
-      @logger.info "Registering prefix /fco"
+      @logger.info "Registering prefix /travel-advice"
       @router.routes.create application_id: "fco", route_type: :prefix,
-        incoming_path: "/fco"
+        incoming_path: "/travel-advice"
     rescue => e
       puts [ e.message, e.backtrace ].join("\n")
     end
@@ -44,6 +44,3 @@ namespace :router do
   desc "Register fco application and routes with the router (run this task on server in cluster)"
   task :register => [ :register_application, :register_routes ]
 end
-
-
-http://fco.preview.alphagov.co.uk/travel-advice
