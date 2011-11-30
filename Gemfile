@@ -1,4 +1,9 @@
 source 'http://rubygems.org'
+source 'https://gems.gemfury.com/vo6ZrmjBQu5szyywDszE/'
+
+group :router do
+  gem 'router-client', '1.0.0', :require => 'router/client'
+end
 
 group :passenger_compatibility do
   gem 'rack', '1.3.5'
