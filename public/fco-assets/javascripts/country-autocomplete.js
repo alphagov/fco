@@ -17,8 +17,9 @@ $(function() {
     available_countries[this_country.text()] = this_country.attr('href');
   });
 
-  $('#travelling-to').before('<input id="country">').hide();
-  $('#country').autocomplete({
+  $('#travelling-to').before('<form><fieldset><label for="country-selector">Where are you travelling to?</label><input id="country-selector"></fieldset></form>').hide();
+  $('.guidance-headline h1').hide();
+  $('#country-selector').autocomplete({
     minLength: 0,
     source: Object.keys(available_countries),
     select: function(event, ui) {

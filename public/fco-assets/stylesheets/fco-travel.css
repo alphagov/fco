@@ -20,14 +20,6 @@
 
 /* homepage */
 
-/* temp until have autocomplete country search */
-.guidance-headline ul {
-	background: yellow;
-	height: 10em;
-	overflow: auto;
-}
-/* end temp */
-
 .fco-home .guidance-headline {
 	background-color: #efece0;
 	border: solid 2px #BBB;
@@ -40,6 +32,21 @@
 .fco-home .guidance-headline h1 {
 	font-size: 1.5em;
 	text-align: center;
+}
+
+.fco-home .guidance-headline form {
+  font-size: 1.25em;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.fco-home .guidance-headline form label {
+  font-weight: bold;
+  margin-right: 2%;
+}
+
+.ui-autocomplete {
+  width: 10em;
 }
 
 .fco-home .updates-travel-advice {
