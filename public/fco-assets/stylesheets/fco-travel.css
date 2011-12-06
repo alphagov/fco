@@ -114,11 +114,16 @@
 .fco-country .article-container {
   margin-right: 20em;
 }
+.lte-ie8 .fco-country .article-container {
+  float: left;
+  margin-right: 0;
+  width: 40em;
+}
 
 .country-details {
   background-color: #E5E5E5;
   border-top: solid 2px #bbb;
-  float: right;
+  float: left;
   padding: 1em;
   width: 18em;
 }
@@ -136,9 +141,7 @@
 }
 
 .presence-info h2 {
-/*  border-top: solid 2px #bbb;*/
   margin: 0.5em 0 0.5em 0;
-/*  padding-top: 0.25em;*/
 }
 
 .presence {
