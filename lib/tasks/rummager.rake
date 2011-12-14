@@ -5,6 +5,7 @@ namespace :rummager do
       "title"             => "Travel advice for #{country.name}",
       "description"       => "",
       "format"            => "fco",
+      "section"           => "travel",
       "link"              => "/travel-advice/countries/#{country.slug}",
       "indexable_content" => country.indexable_content
     }}
