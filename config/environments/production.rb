@@ -58,5 +58,5 @@ Fco::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.middleware.use Slimmer::App, :asset_host => Plek.current.find("static")
+  config.slimmer.asset_host = Plek.current.find('assets')
 end

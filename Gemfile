@@ -18,13 +18,13 @@ gem 'stringex'
 gem 'loofah'
 gem 'nokogiri'
 gem 'whenever'
-gem 'plek', '0.1.5'
+gem 'plek', '0.1.11'
 gem 'rummageable', :git => 'git@github.com:alphagov/rummageable.git'
 
 if ENV['SLIMMER_DEV']
   gem 'slimmer', :path => '../slimmer'
 else
-  gem 'slimmer', '0.8.0'
+  gem 'slimmer', '~> 1.1'
 end
 
 group :development do
