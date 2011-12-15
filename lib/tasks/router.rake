@@ -17,13 +17,17 @@ namespace :router do
   end
 
   task :register_routes => [ :router_environment, :environment ] do
+    begin
     @logger.info "Registering prefix /travel-advice"
-   @router.routes.update application_id: "fco", route_type: :prefix,
+    @router.routes.update application_id: "fco", route_type: :prefix,
      incoming_path: "/travel-advice"
 
     @logger.info "Registering asset path /fco-assets"
     @router.routes.update application_id: "fco", route_type: :prefix,
       incoming_path: "/fco-assets"
+    rescue => e
+      logger.error [ e.message, e.backtrace ].flatten.join("\n")
+    end
   end
 
   desc "Register fco application and routes with the router (run this task on server in cluster)"
