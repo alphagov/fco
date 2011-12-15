@@ -26,7 +26,8 @@ namespace :router do
     @router.routes.update application_id: "fco", route_type: :prefix,
       incoming_path: "/fco-assets"
     rescue => e
-      logger.error [ e.message, e.backtrace ].flatten.join("\n")
+      @logger.error [ e.message, e.backtrace ].flatten.join("\n")
+      raise
     end
   end
 
