@@ -18,7 +18,9 @@ gem 'stringex'
 gem 'loofah'
 gem 'nokogiri'
 gem 'whenever'
-gem 'plek', '0.1.11'
+
+gem 'plek', '~> 0'
+
 gem 'rummageable', :git => 'git@github.com:alphagov/rummageable.git'
 
 if ENV['SLIMMER_DEV']
