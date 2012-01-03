@@ -42,6 +42,11 @@ GEM
     addressable (2.2.6)
     ansi (1.4.1)
     arel (2.2.1)
+    aws-ses (0.4.4)
+      builder
+      mail (> 2.2.5)
+      mime-types
+      xml-simple
     builder (3.0.0)
     chronic (0.6.6)
     ci_reporter (1.6.9)
@@ -143,11 +148,13 @@ GEM
     whenever (0.7.2)
       activesupport (>= 2.3.4)
       chronic (~> 0.6.3)
+    xml-simple (1.1.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-ses
   ci_reporter
   guard
   guard-minitest

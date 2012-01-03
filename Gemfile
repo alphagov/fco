@@ -21,6 +21,7 @@ gem 'whenever'
 
 gem 'plek', '~> 0'
 
+gem 'aws-ses', :require => 'aws/ses'
 gem 'rummageable', :git => 'git@github.com:alphagov/rummageable.git'
 
 if ENV['SLIMMER_DEV']
