@@ -23,6 +23,7 @@ gem 'plek', '~> 0'
 
 gem 'aws-ses', :require => 'aws/ses'
 gem 'rummageable', :git => 'git@github.com:alphagov/rummageable.git'
+gem 'exception_notification'
 
 if ENV['SLIMMER_DEV']
   gem 'slimmer', :path => '../slimmer'
