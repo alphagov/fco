@@ -18,7 +18,8 @@ gem 'stringex'
 gem 'loofah'
 gem 'nokogiri'
 gem 'whenever'
-
+gem 'gelf'
+gem 'graylog2_exceptions'
 gem 'plek', '~> 0'
 
 gem 'aws-ses', :require => 'aws/ses'
